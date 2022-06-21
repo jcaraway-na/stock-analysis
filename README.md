@@ -27,7 +27,7 @@ The analysis below will provide insight into the following:
 - When user enters a dataset sheet name ("2017", "2018", "2019"...), if the data sheet is not avalable then an error is thrown.
 
 #### Solution 1.0:
-> ![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/datasheet_name_avalability.png)
+![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/datasheet_name_avalability.png)
 
 #### Solution Definition 1.0:
 
@@ -38,14 +38,21 @@ The analysis below will provide insight into the following:
 #### Solution 1.1:
 
 > With the stored bool, the following code was added.
-> ![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/datasheet_name_avalability_catch.png)
+
+![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/datasheet_name_avalability_catch.png)
 
 #### Solution Definition 1.1:
 
 1. If worksheetExist is true, then run the stock-analyzer.
 2. if worksheetExist is false, then show message, "Worksheet +variable+ does not exist. Please try again.". Call AllStocksAnalysis() to restart function.
 
-#### Solution 1.2:
+#### Refactor Result 1.1:
+> Notification window pops-up informing the user that the entered sheet name does not exist. Please try again. The macro is then restarted; bringing the user back
+> to the enter year control.
 
-> With the stored bool, the following code was added.
-> ![This is an image]()
+![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/worksheet_notexist.png)
+
+### Conditional Formatting
+
+#### Issues:
+- Conditional formatting macro is set to a constant range. If a user adds a ticker symbole to the ticker array, the conditional formatting macro will ignore the added symbole. The following refactor will address this issue.
