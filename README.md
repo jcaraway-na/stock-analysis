@@ -21,25 +21,30 @@ The analysis below will provide insight into the following:
 
 > The following describes issues or faults and the refactored solutions to resolve them or improve functionality.
 
-### Worksheet avalability
+### Worksheet User Experience Error Handling
 
 #### Issues:
-- When user enters a dataset sheet name ("2017", "2018", "2019"...), if the data sheet is not avalable then an error is thrown.
+
+1. Input box accepts varchar. should only accept year integers.
+2. If user clicks cancel on input box, an error is thrown
+3. When user enters a dataset sheet name ("2017", "2018", "2019"...), if the data sheet is not available then an error is thrown.
 
 #### Solution 1.0:
-![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/datasheet_name_avalability.png)
+![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/datasheet_name_avalability1.png)
 
 #### Solution Definition 1.0:
 
-1. Count the number of sheets in the workbook in order to aquire sheet count. This is then stored in variable "totalSheets". 
-2. If the sheet name exists, then set "worksheetExists" to true and exit for loop. 
-3. If sheet name does not exist, then set "worksheeExist" to false.
+> The above tries to handle User Experiance issues. 
+> 1. "set inputbox to only accept integers": applied a simple object variable validation to only accept integers ONLY.
+> 2. "if user clicks cancel": applied If input == False Then Exit sub on cancel click.
+> 3. "when user enters dataset sheet name, if sheet is not available": built "sheet detector" function. if a user enters a data sheet name that is not available, 
+> then user is prompted, "..."Worksheet " + yearValue + " does not exist. Please try again"...". the Sub routine is then restarted.
 
 #### Solution 1.1:
 
 > With the stored bool, the following code was added.
-
-![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/datasheet_name_avalability_catch.png)
+>
+> ![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/datasheet_name_avalability_catch.png)
 
 #### Solution Definition 1.1:
 
@@ -49,8 +54,8 @@ The analysis below will provide insight into the following:
 #### Refactor Result 1.1:
 > Notification window pops-up informing the user that the entered sheet name does not exist. Please try again. The macro is then restarted; bringing the user back
 > to the enter year control.
-
-![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/worksheet_notexist.png)
+>
+> ![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/worksheet_notexist.png)
 
 ### Conditional Formatting
 
@@ -58,7 +63,23 @@ The analysis below will provide insight into the following:
 - Conditional formatting macro is set to a constant range. If a user adds a ticker symbole to the ticker array, the conditional formatting macro will ignore the added symbole. The following refactor will address this issue.
 
 > Original Code:
+> 
 > ![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/conditional_res/original_conditional_rows.png)
 
 #### Solution 2.0:
 
+> ![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/conditional_res/refactor_conditional_rows.png)
+
+#### Solution Definition 2.1:
+
+1. Dynamically count rows that need conditional formatting.
+2. There is no need for constants startRow and endRow variables.
+
+> Once Dynamic range is stored, the stored vaiables are then applied to the conditional formatting For Loop.
+>
+> ![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/conditional_res/conditional_complete_refactor.png)
+
+#### Solution Definition 2.1.1:
+
+1. Dynamically count rows that need conditional formatting.
+2. There is no need for constants startRow and endRow variables.
