@@ -45,4 +45,7 @@ The analysis below will provide insight into the following:
 1. If worksheetExist is true, then run the stock-analyzer.
 2. if worksheetExist is false, then show message, "Worksheet +variable+ does not exist. Please try again.". Call AllStocksAnalysis() to restart function.
 
+#### Solution 1.2:
 
+> With the stored bool, the following code was added.
+> ![This is an image]()
