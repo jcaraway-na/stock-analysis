@@ -56,3 +56,9 @@ The analysis below will provide insight into the following:
 
 #### Issues:
 - Conditional formatting macro is set to a constant range. If a user adds a ticker symbole to the ticker array, the conditional formatting macro will ignore the added symbole. The following refactor will address this issue.
+
+> Original Code:
+> ![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/conditional_res/original_conditional_rows.png)
+
+#### Solution 2.0:
+
