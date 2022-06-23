@@ -57,8 +57,28 @@ The analysis below will provide insight into the following:
 
 #### Solution Definition 2.0:
 
-> The above tries to handle User Experiance issues. 
-> 1. Set inputbox to only accept integers": applied a simple object variable validation to only accept integers ONLY.
-> 2. If user clicks cancel": added an If input == False Then Exit sub on "cancel" click.
-> 3. When user enters dataset sheet name, if sheet is not available": built "sheet detector" function. If a user enters a data sheet name that is not available, 
-> then user is prompted, "..."Worksheet " + yearValue + " does not exist. Please try again"...". The Sub routine is then restarted.
+> The above addresses the hard coded start and end conditional formatting indexes. 
+> I added some logic to find the count of cells with values in them on the All Stocks Analysis column A. this will store the value dynamically in variable "rowCount" this variable is then used for dynamic number formatting, as well as the conditional color formatting for loop. Please see image above for continued explination.
+
+## In Summary
+
+As a whole I feel the script is in better working order, there is still room for improvement with this script. 
+
+One advantage of this refactor is, we have drastically reduced the time it takes to run the analysis. So larger datasets should not be a problem moving forward. Moving forward, we should start considering making the ticker array dynamic. Currently in the original code and the refactored code; the ticker array index is hardcoded. This will have a negative effect on the overall UX of the macro/excel project. 
+
+#### Run time 2017 original:
+
+![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/2017_before_Refactor.png)
+
+#### Run time 2017 refactored:
+
+![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/2017_after_Refactor1.png)
+
+#### Run time 2018 original:
+
+![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/2018_before_Refactor.png)
+
+#### Run time 2018 refactored:
+
+![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/2018_after_Refactor1.png)
+
