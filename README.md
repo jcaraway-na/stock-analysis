@@ -31,13 +31,34 @@ The analysis below will provide insight into the following:
 
 
 #### Solution 1.0:
-![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/ux_error_handling_res/ux_code_errorhandler.png)
+![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/ux_error_handling_res/ux_code_errorhandler1%20(2).png)
 
 #### Solution Definition 1.0:
 
 > The above tries to handle User Experiance issues. 
-> 1. "set inputbox to only accept integers": applied a simple object variable validation to only accept integers ONLY.
-> 2. "if user clicks cancel": applied If input == False Then Exit sub on cancel click.
-> 3. "when user enters dataset sheet name, if sheet is not available": built "sheet detector" function. if a user enters a data sheet name that is not available, 
-> then user is prompted, "..."Worksheet " + yearValue + " does not exist. Please try again"...". the Sub routine is then restarted.
+> 1. Set inputbox to only accept integers": applied a simple object variable validation to only accept integers ONLY.
+> 2. If user clicks cancel": added an If input == False Then Exit sub on "cancel" click.
+> 3. When user enters dataset sheet name, if sheet is not available": built "sheet detector" function. If a user enters a data sheet name that is not available, 
+> then user is prompted, "..."Worksheet " + yearValue + " does not exist. Please try again"...". The Sub routine is then restarted.
 
+---
+
+### Conditional Formatting: Static Range vs. Dynamic Ranging
+
+#### Issues 2.0:
+
+1. Conditional formatting range is hard coded in code behind. This could lead to future issues on usability if a ticker is added to the dataset.
+
+> ![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/dynamic_indexing_res/original_hardcode_ranging.png)
+> Above image shows original code and describes the potintial issue behind code.
+
+#### Solution 2.0:
+![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/dynamic_indexing_res/refactored_dynamic_ranging.png)
+
+#### Solution Definition 2.0:
+
+> The above tries to handle User Experiance issues. 
+> 1. Set inputbox to only accept integers": applied a simple object variable validation to only accept integers ONLY.
+> 2. If user clicks cancel": added an If input == False Then Exit sub on "cancel" click.
+> 3. When user enters dataset sheet name, if sheet is not available": built "sheet detector" function. If a user enters a data sheet name that is not available, 
+> then user is prompted, "..."Worksheet " + yearValue + " does not exist. Please try again"...". The Sub routine is then restarted.
