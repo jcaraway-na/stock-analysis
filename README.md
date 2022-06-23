@@ -11,7 +11,7 @@ The analysis below will provide insight into the following:
 ### OBJECTIVE
 
 - DELIVERABLE 1: Please see attached Refactored VBA Code for the Green-Stocks Analyzer.
-- DELIVERABLE 2: Release notes over review of the refactored code compaired to legacy code.
+- DELIVERABLE 2: Release notes for review of the refactored code. Will include summaries for areas of improved code.
 
 ---
 ---
@@ -23,14 +23,15 @@ The analysis below will provide insight into the following:
 
 ### Worksheet User Experience Error Handling
 
-#### Issues:
+#### Issues 1.0:
 
 1. Input box accepts varchar. should only accept year integers.
 2. If user clicks cancel on input box, an error is thrown
 3. When user enters a dataset sheet name ("2017", "2018", "2019"...), if the data sheet is not available then an error is thrown.
 
+
 #### Solution 1.0:
-![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/datasheet_name_avalability1.png)
+![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/ux_error_handling_res/ux_code_errorhandler.png)
 
 #### Solution Definition 1.0:
 
@@ -40,46 +41,3 @@ The analysis below will provide insight into the following:
 > 3. "when user enters dataset sheet name, if sheet is not available": built "sheet detector" function. if a user enters a data sheet name that is not available, 
 > then user is prompted, "..."Worksheet " + yearValue + " does not exist. Please try again"...". the Sub routine is then restarted.
 
-#### Solution 1.1:
-
-> With the stored bool, the following code was added.
->
-> ![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/datasheet_name_avalability_catch.png)
-
-#### Solution Definition 1.1:
-
-1. If worksheetExist is true, then run the stock-analyzer.
-2. if worksheetExist is false, then show message, "Worksheet +variable+ does not exist. Please try again.". Call AllStocksAnalysis() to restart function.
-
-#### Refactor Result 1.1:
-> Notification window pops-up informing the user that the entered sheet name does not exist. Please try again. The macro is then restarted; bringing the user back
-> to the enter year control.
->
-> ![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/worksheet_notexist.png)
-
-### Conditional Formatting
-
-#### Issues:
-- Conditional formatting macro is set to a constant range. If a user adds a ticker symbole to the ticker array, the conditional formatting macro will ignore the added symbole. The following refactor will address this issue.
-
-> Original Code:
-> 
-> ![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/conditional_res/original_conditional_rows.png)
-
-#### Solution 2.0:
-
-> ![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/conditional_res/refactor_conditional_rows.png)
-
-#### Solution Definition 2.1:
-
-1. Dynamically count rows that need conditional formatting.
-2. There is no need for constants startRow and endRow variables.
-
-> Once Dynamic range is stored, the stored vaiables are then applied to the conditional formatting For Loop.
->
-> ![This is an image](https://github.com/jcaraway-na/stock-analysis/blob/main/resources/refactor_res/conditional_res/conditional_complete_refactor.png)
-
-#### Solution Definition 2.1.1:
-
-1. Dynamically count rows that need conditional formatting.
-2. There is no need for constants startRow and endRow variables.
